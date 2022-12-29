@@ -23,6 +23,8 @@ index.remove('11SB22027')
 
 output = []
 
+outS = str(input('Enter the name of output excel sheet with extension(example.xlsx):  '))
+
 for i in index[:153]:
     PATH = 'C:\driver\chromedriver.exe'
     driver = webdriver.Chrome(PATH)
@@ -51,14 +53,16 @@ for i in index[:153]:
 
     ict = float(driver.find_element(By.XPATH, "//*[@id='tbh']/tr[10]/td[4]").text)
     perc = float(driver.find_element(By.XPATH, "//*[@id='ftr']/tr/th[2]").text.split('Percentage:  ')[1][:-1])
+    result = driver.find_element(By.XPATH, '//*[@id="ftr"]/tr/th[3]').text.split('Result:  ')[1]
+
 
     #Ouput preparation
     print((i,name,eng, dzo, math, phy, chem, bio, ict, perc))
-    output.append((i,name,eng, dzo, math, phy, chem, bio, ict, perc))
+    output.append((i,name,eng, dzo, math, phy, chem, bio, ict, perc, result))
     
     driver.quit()
 
 
 #Output
-give('Output.xlsx', output)
+give(outS, output)
 
