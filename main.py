@@ -18,7 +18,8 @@ from post import give
 
 
 index = []
-data('list.xlsx', index)
+liIpt = str(input('Enter the name of excel sheet with the index(example.xlsx):  '))
+data(liIpt, index)
 index.remove('11SB22027')
 
 output = []
