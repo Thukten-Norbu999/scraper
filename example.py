@@ -3,6 +3,7 @@ importing selenium along with some of its functions
 to make it easier
 '''
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 #from selenium.webdriver import Chrome
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -13,9 +14,9 @@ import time
 i = str(input('Enter Your Index Correctly:  '))
 
 
-
-PATH = 'C:\driver\chromedriver.exe'
-driver = webdriver.Chrome(PATH)
+PATH = 'C:\chromedriver-win64\chromedriver.exe'
+service = Service(executable_path='chromedriver.exe')
+driver = webdriver.Chrome(service=service)
 driver.get('https://www.aeresult.yhss.edu.bt/')
 
 
