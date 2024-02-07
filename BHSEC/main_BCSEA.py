@@ -9,7 +9,7 @@ import time
 import os
 
 #
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 
 
 class ScraperB:
@@ -58,7 +58,7 @@ class ScraperB:
                     bio = "NA"
                     perc = sum(sorted([eng, dzo, phy, chem, math])[1:])/4
                     
-                    entry = [INDEX, DOB, cid, eng, dzo, math, phy, chem, bio, perc]
+                    entry = (INDEX, DOB, cid, eng, dzo, math, phy, chem, bio, perc)
                     return entry
 
                 else:
@@ -68,7 +68,7 @@ class ScraperB:
                     bio = float(self.driver.find_element(By.XPATH, '//*[@id="myTable"]/tbody/tr[8]/th[2]').text)
                     perc = sum(sorted([eng, dzo, phy, chem, bio])[1:])/4
 
-                    entry = [INDEX, DOB, cid, eng, dzo, math, phy, chem, bio, perc]
+                    entry = (INDEX, DOB, cid, eng, dzo, math, phy, chem, bio, perc)
                     return entry
 
         self.driver.quit()
@@ -81,13 +81,18 @@ class ScraperB:
 
         max_row, max_col = sheet.max_row, sheet.max_column
 
-        for i in range(1, max_col-1):
-            for col in sheet.iter_cols(max_col=1,min_row=2):
-                for cell in col:
-                    info_list.append(cell.value)
-        
+        for i in range(1, max_row):
+            index, dob = sheet.cell(row=i, column=1), sheet.cell(row=i, column=2)
+            info_list.append((index,dob))
 
-
+        return info_list
+    
+    def create_output(self, output_type, info_list, name):
+        wb = Workbook()
+        ws = wb.active
+        for i in info_list:
+            ws.append(i)
+        wb.save(name)
 
 marks = ScraperB(False)
 

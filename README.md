@@ -9,8 +9,9 @@ pip install openpyxl
 
 pip install selenium
 
+<h2>#WHAT TO DO BEFORE RUNNiNG THE CODE</h2>
 
-#WHAT TO DO BEFORE RUNNiNG THE CODE
+
 1. Add the index excel sheet(for reference list.xlsx)
 2. then add the excel sheet for output
 
