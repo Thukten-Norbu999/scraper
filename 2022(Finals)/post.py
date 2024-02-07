@@ -1,12 +1,13 @@
 from openpyxl import load_workbook
+import os
 import openpyxl
 def give(sheet, data):
     wb = openpyxl.Workbook()
     ws = wb.active
     for i in data:
         ws.append(i)
-    wb.save(sheet)
-
+    wb.save(f'./BHSEC/Outputs/{sheet}')
+give('output.xlsx',(("THukten","KINga","Lunda"),("THukten","KINga","Lunda"),("THukten","KINga","Lunda")))
 '''
 wb = openpyxl.Workbook()
 ws = wb.active
