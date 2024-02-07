@@ -11,8 +11,8 @@ from selenium.webdriver.common.by import By
 ##Import Other modules
 import time
 
-
-##Import Functions
+# _________________ #
+# Import Functions  #
 from data import data
 from post import give
 from scrapper import sci

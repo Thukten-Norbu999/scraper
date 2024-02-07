@@ -10,3 +10,7 @@ def data(sheet, index_list):
         for cell in col:
             index_list.append(cell.value)
         
+for i in range(2,15):
+    if i%3!=0 or i%2!=0:
+        print(i)
+    

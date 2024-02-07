@@ -73,20 +73,22 @@ class ScraperB:
 
         self.driver.quit()
     
-    def getdata(self, sheet, index_list):
-        wb = load_workbook(sheet)
+    def getdata(self, file_name):
+        wb = load_workbook(file_name)
         sheet = wb.active
         sheet = wb.get_sheet_by_name('Sheet1')
+        info_list = []
 
-        for col in sheet.iter_cols(max_col=1,min_row=2):
-            for cell in col:
-                index_list.append(cell.value)
+        max_row, max_col = sheet.max_row, sheet.max_column
+
+        for i in range(1, max_col-1):
+            for col in sheet.iter_cols(max_col=1,min_row=2):
+                for cell in col:
+                    info_list.append(cell.value)
         
 
 
 
 marks = ScraperB(False)
 
-print(marks.scrape('012230020053','07/20/2006'))
-print(marks.scrape('012230020065','12/05/2004'))
-print(marks.scrape('012230020039','01/12/2006'))
+marks.getdata('file.xlsx')
