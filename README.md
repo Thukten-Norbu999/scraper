@@ -15,6 +15,6 @@ pip install selenium
 1. Add the index excel sheet(for reference list.xlsx)
 2. then add the excel sheet for output
 
-                <h1>OR Watch any latest selenium setups</h1>
+   OR Watch any latest selenium setups
 
 #AFTER RUNNING THE CODE BE SURE TO NOT DO ANYTHING
